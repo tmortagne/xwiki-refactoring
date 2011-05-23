@@ -29,8 +29,8 @@
     <artifactId>xwiki-platform-core</artifactId>
     <version>3.1-SNAPSHOT</version>
   </parent>
-  <artifactId>xwiki-platform-refactoring</artifactId>
-  <name>XWiki Platform - Refactoring</name>
+  <artifactId>xwiki-contrib-refactoring</artifactId>
+  <name>XWiki Contrib - Refactoring</name>
   <packaging>jar</packaging>
   <description>XWiki Platform - Refactoring</description>
   <dependencies>
