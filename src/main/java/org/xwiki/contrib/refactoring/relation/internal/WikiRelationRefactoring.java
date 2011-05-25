@@ -1,4 +1,4 @@
-package org.xwiki.contrib.refactoring.internal;
+package org.xwiki.contrib.refactoring.relation.internal;
 
 import java.util.Collections;
 import java.util.List;

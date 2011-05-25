@@ -1,4 +1,4 @@
-package org.xwiki.contrib.refactoring.internal;
+package org.xwiki.contrib.refactoring.internal.object;
 
 import java.util.Arrays;
 import java.util.List;
