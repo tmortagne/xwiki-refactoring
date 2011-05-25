@@ -18,10 +18,11 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
  */
-package org.xwiki.refactoring.event;
+package org.xwiki.contrib.refactoring.event;
 
 import org.xwiki.bridge.event.AbstractDocumentEvent;
 import org.xwiki.model.reference.DocumentReference;
+import org.xwiki.model.reference.EntityReference;
 import org.xwiki.observation.event.filter.EventFilter;
 
 /**
@@ -29,7 +30,7 @@ import org.xwiki.observation.event.filter.EventFilter;
  * 
  * @version $Id$
  */
-public class AbstractXObjectEvent extends AbstractDocumentEvent
+public class AbstractXObjectEvent extends AbstractDocumentEvent implements XObjectEvent
 {
     /**
      * The version identifier for this Serializable class. Increment only if the <i>serialized</i> form of the class
@@ -37,12 +38,12 @@ public class AbstractXObjectEvent extends AbstractDocumentEvent
      */
     private static final long serialVersionUID = 1L;
 
-    private DocumentReference classReference;
+    private EntityReference xclassReference;
 
     /**
      * The identifier of the object related to this event.
      */
-    private Integer identifier;
+    private Integer number;
 
     /**
      * Constructor initializing the event filter with an
@@ -60,12 +61,12 @@ public class AbstractXObjectEvent extends AbstractDocumentEvent
      * @param documentName the name of the updated document to match
      * @param identifier the identifier of the object added/updated/deleted
      */
-    public AbstractXObjectEvent(DocumentReference documentReference, DocumentReference classReference, Integer identifier)
+    public AbstractXObjectEvent(DocumentReference documentReference, EntityReference classReference, Integer identifier)
     {
         super(documentReference);
 
-        this.classReference = classReference;
-        this.identifier = identifier;
+        this.xclassReference = classReference;
+        this.number = identifier;
     }
 
     /**
@@ -78,13 +79,42 @@ public class AbstractXObjectEvent extends AbstractDocumentEvent
         super(eventFilter);
     }
 
+    public EntityReference getXClassReference()
+    {
+        return this.xclassReference;
+    }
+
     /**
      * Retrieves the identifier of the object added/updated/deleted in the event.
      * 
      * @return object identifier
      */
-    public Integer getIdentifier()
+    public Integer getNumber()
     {
-        return this.identifier;
+        return this.number;
+    }
+
+    @Override
+    public boolean matches(Object otherEvent)
+    {
+        boolean matches = super.matches(otherEvent);
+
+        if (!matches || !(otherEvent instanceof XObjectEvent)) {
+            return false;
+        }
+
+        XObjectEvent objectEvent = (XObjectEvent) otherEvent;
+
+        return matchesClass(objectEvent.getXClassReference()) && matchesNumber(objectEvent.getNumber());
+    }
+
+    protected boolean matchesClass(EntityReference otherReference)
+    {
+        return getXClassReference() == null || getXClassReference().equals(otherReference);
+    }
+
+    protected boolean matchesNumber(Integer otherNumber)
+    {
+        return getNumber() == null || getNumber() == otherNumber;
     }
 }

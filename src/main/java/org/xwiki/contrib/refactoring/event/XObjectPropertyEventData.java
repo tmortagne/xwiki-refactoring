@@ -1,4 +1,4 @@
-package org.xwiki.refactoring.event;
+package org.xwiki.contrib.refactoring.event;
 
 import com.xpn.xwiki.doc.XWikiDocument;
 import com.xpn.xwiki.objects.BaseObject;

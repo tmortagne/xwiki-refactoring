@@ -18,7 +18,7 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
  */
-package org.xwiki.refactoring.event;
+package org.xwiki.contrib.refactoring.event;
 
 import org.xwiki.model.reference.DocumentReference;
 import org.xwiki.observation.event.filter.EventFilter;
@@ -28,7 +28,7 @@ import org.xwiki.observation.event.filter.EventFilter;
  * 
  * @version $Id$
  */
-public class AbstractXObjectPropertyEvent extends AbstractXObjectEvent
+public class AbstractXObjectPropertyEvent extends AbstractXObjectEvent implements XObjectPropertyEvent
 {
     /**
      * The version identifier for this Serializable class. Increment only if the <i>serialized</i> form of the class
@@ -70,5 +70,22 @@ public class AbstractXObjectPropertyEvent extends AbstractXObjectEvent
     public AbstractXObjectPropertyEvent(EventFilter eventFilter)
     {
         super(eventFilter);
+    }
+
+    public String getProperty()
+    {
+        return this.property;
+    }
+
+    @Override
+    public boolean matches(Object otherEvent)
+    {
+        boolean matches = super.matches(otherEvent);
+
+        if (!matches || !(otherEvent instanceof XObjectPropertyEvent)) {
+            return false;
+        }
+
+        return getProperty() == null || getProperty().equals(((XObjectPropertyEvent) otherEvent).getProperty());
     }
 }

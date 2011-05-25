@@ -1,9 +1,9 @@
-package org.xwiki.refactoring;
+package org.xwiki.contrib.refactoring;
 
 import java.util.List;
 
+import org.xwiki.contrib.refactoring.relation.WikiRelation;
 import org.xwiki.model.reference.DocumentReference;
-import org.xwiki.refactoring.relation.WikiRelation;
 
 public interface RefactoringConfiguration
 {

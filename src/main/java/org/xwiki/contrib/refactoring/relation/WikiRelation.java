@@ -1,4 +1,4 @@
-package org.xwiki.refactoring.relation;
+package org.xwiki.contrib.refactoring.relation;
 
 import org.xwiki.model.reference.EntityReference;
 

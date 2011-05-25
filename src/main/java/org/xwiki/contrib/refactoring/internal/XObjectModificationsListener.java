@@ -1,4 +1,4 @@
-package org.xwiki.refactoring.internal;
+package org.xwiki.contrib.refactoring.internal;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,17 +11,17 @@ import org.xwiki.bridge.event.DocumentCreatedEvent;
 import org.xwiki.bridge.event.DocumentDeletedEvent;
 import org.xwiki.bridge.event.DocumentUpdatedEvent;
 import org.xwiki.component.annotation.Component;
+import org.xwiki.contrib.refactoring.event.XObjectAddedEvent;
+import org.xwiki.contrib.refactoring.event.XObjectDeletedEvent;
+import org.xwiki.contrib.refactoring.event.XObjectEventData;
+import org.xwiki.contrib.refactoring.event.XObjectModifiedEvent;
+import org.xwiki.contrib.refactoring.event.XObjectPropertyAddedEvent;
+import org.xwiki.contrib.refactoring.event.XObjectPropertyDeletedEvent;
+import org.xwiki.contrib.refactoring.event.XObjectPropertyEventData;
+import org.xwiki.contrib.refactoring.event.XObjectPropertyModifiedEvent;
 import org.xwiki.observation.EventListener;
 import org.xwiki.observation.ObservationManager;
 import org.xwiki.observation.event.Event;
-import org.xwiki.refactoring.event.XObjectAddedEvent;
-import org.xwiki.refactoring.event.XObjectDeletedEvent;
-import org.xwiki.refactoring.event.XObjectEventData;
-import org.xwiki.refactoring.event.XObjectModifiedEvent;
-import org.xwiki.refactoring.event.XObjectPropertyAddedEvent;
-import org.xwiki.refactoring.event.XObjectPropertyDeletedEvent;
-import org.xwiki.refactoring.event.XObjectPropertyEventData;
-import org.xwiki.refactoring.event.XObjectPropertyModifiedEvent;
 
 import com.xpn.xwiki.XWikiContext;
 import com.xpn.xwiki.XWikiException;

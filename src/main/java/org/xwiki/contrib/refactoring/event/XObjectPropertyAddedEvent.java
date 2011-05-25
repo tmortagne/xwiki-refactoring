@@ -1,4 +1,4 @@
-package org.xwiki.refactoring.event;
+package org.xwiki.contrib.refactoring.event;
 
 import org.xwiki.model.reference.DocumentReference;
 
